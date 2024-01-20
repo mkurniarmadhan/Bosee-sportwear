@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\TestEvent;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $produks = Produk::all();
+    event(new TestEvent('hello world'));
+
     return view('welcome', compact('produks'));
 })->name('home');
 
